@@ -11,15 +11,7 @@ var dashboardRouter = require('./routes/dashboard');
 var loginRouter = require('./routes/login');
 var postRouter = require('./routes/post');
 
-const {Sequelize} = require('sequelize');
-const sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL);
-
-sequelize.authenticate().then(() => {
-  console.log('DB Connection has been established successfully.');
-  sequelize.close();
-}).catch((error) => {
-  console.error('Unable to connect to the database:', error);
-});
+const db = require("./models");
 
 var app = express();
 
@@ -53,5 +45,14 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+db.sequelize.sync({force: true})
+  .then(() => {
+    console.log("Database synced successfully!");
+  })
+  .catch((error) => {
+    console.log("Failed to sync database: " + error.message);
+  });
 
 module.exports = app;
