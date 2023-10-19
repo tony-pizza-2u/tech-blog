@@ -1,8 +1,48 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin-top: 10px;
 }
 
-a {
-  color: #00B7FF;
+#header {
+  
+}
+
+.blog_button {
+  padding: 5px;
+  background-color: #342832;
+  color: #fff;
+  border: 3px solid #342832;
+  border-radius: 3px;
+  text-align: center;
+  float: right;
+  cursor: pointer;
+}
+
+.post {
+  margin-top: 5px;
+  border: 3px solid #342832;
+  border-radius: 3px;
+  background-color: #C1CAD1;
+  cursor: pointer;
+}
+
+.post_header {
+  background-color: #342832;
+  color: #ffffff;
+  padding: 3px;
+}
+
+.post_details {
+  text-align: right;
+}
+
+.post_content {
+  padding-left: 2px;
+}
+
+.nav-link.active {
+  color: #342832 !important;
+}
+
+.nav-link {
+  color: #6CAAB9 !important;
 }
