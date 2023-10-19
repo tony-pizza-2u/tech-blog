@@ -6,7 +6,7 @@ body {
   
 }
 
-.blog_button {
+.post_button {
   padding: 5px;
   background-color: #342832;
   color: #fff;
@@ -15,6 +15,7 @@ body {
   text-align: center;
   float: right;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .post {
@@ -37,6 +38,17 @@ body {
 
 .post_content {
   padding-left: 2px;
+}
+
+.post_comments {
+  background-color: #fff;
+}
+
+.comment_user {
+  display: block;
+  margin-top: .5em;
+  margin-left: 2em;
+  font-size: .75em;
 }
 
 .nav-link.active {
