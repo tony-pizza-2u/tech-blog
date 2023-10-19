@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -8,6 +10,16 @@ var indexRouter = require('./routes/index');
 var dashboardRouter = require('./routes/dashboard');
 var loginRouter = require('./routes/login');
 var postRouter = require('./routes/post');
+
+const {Sequelize} = require('sequelize');
+const sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL);
+
+sequelize.authenticate().then(() => {
+  console.log('DB Connection has been established successfully.');
+  sequelize.close();
+}).catch((error) => {
+  console.error('Unable to connect to the database:', error);
+});
 
 var app = express();
 
