@@ -3,7 +3,6 @@ var router = express.Router();
 
 const menubar = require('../utils/menubar');
 
-/* GET home page. */
 router.get('/:id', function(req, res, next) {
 
   var post = {};
