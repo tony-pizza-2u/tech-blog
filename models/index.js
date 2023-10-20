@@ -11,7 +11,7 @@ db.User = require("./user.js")(sequelize, Sequelize);
 db.Post = require("./post.js")(sequelize, Sequelize);
 db.Comment = require("./comment.js")(sequelize, Sequelize);
 
-db.User.hasMany(db.Post);
+db.Post.hasOne(db.User);
 db.Post.hasMany(db.Comment);
 db.Comment.hasOne(db.User);
 
