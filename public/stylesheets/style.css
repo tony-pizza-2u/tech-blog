@@ -3,15 +3,7 @@ body {
 }
 
 .post_button {
-  padding: 5px;
-  background-color: #0d6efd;
-  color: #fff;
-  border: 3px solid #0d6efd;
-  border-radius: 3px;
-  text-align: center;
   float: right;
-  cursor: pointer;
-  text-decoration: none;
 }
 
 .post {
