@@ -47,7 +47,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-db.sequelize.sync({force: true})
+db.sequelize.sync({force: process.env.FORCE_DB})
   .then(() => {
     console.log("Database synced successfully!");
   })
