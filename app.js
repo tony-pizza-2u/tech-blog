@@ -11,8 +11,6 @@ var dashboardRouter = require('./routes/dashboard');
 var loginRouter = require('./routes/login');
 var postRouter = require('./routes/post');
 
-const db = require("./models");
-
 var app = express();
 
 // view engine setup
@@ -47,12 +45,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-db.sequelize.sync({force: process.env.FORCE_DB})
-  .then(() => {
-    console.log("Database synced successfully!");
-  })
-  .catch((error) => {
-    console.log("Failed to sync database: " + error.message);
-  });
+//Get the DB working
+const db = require("./models");
 
 module.exports = app;

@@ -1,5 +1,5 @@
 require('dotenv').config();
-const {Sequelize} = require('sequelize');
+const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL);
 
 const db = {};
@@ -15,5 +15,29 @@ db.Post.hasMany(db.Comment);
 
 db.User.hasMany(db.Comment);
 db.User.hasMany(db.Post);
+
+if (process.env.SYNC_DB == 'true') {
+
+    syncConfig = {};
+
+    switch (process.env.SYNC_TYPE) {
+        case 'force':
+            syncConfig = {force: true};
+            break;
+        case 'alter':
+            syncConfig = {alter: true}
+            break;
+        default:
+            syncConfig = null;
+    }
+
+    db.sequelize.sync(syncConfig).then(() => {
+        console.log("Database synced successfully!");
+    }).catch((error) => {
+        console.log("Failed to sync database: " + error.message);
+    });
+
+}
+
 
 module.exports = db;
