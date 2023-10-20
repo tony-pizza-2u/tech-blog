@@ -11,6 +11,8 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 var dashboardRouter = require('./routes/dashboard');
 var loginRouter = require('./routes/login');
+var logoutRouter = require('./routes/logout');
+var signupRouter = require('./routes/signup');
 var postRouter = require('./routes/post');
 
 var app = express();
@@ -43,6 +45,8 @@ app.use(session(sess));
 app.use('/', indexRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/login', loginRouter);
+app.use('/logout', logoutRouter);
+app.use('/signup', signupRouter);
 app.use('/post', postRouter);
 
 
