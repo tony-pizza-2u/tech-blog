@@ -5,6 +5,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session')
+
 
 var indexRouter = require('./routes/index');
 var dashboardRouter = require('./routes/dashboard');
@@ -23,11 +25,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/dashboard', dashboardRouter);
-app.use('/login', loginRouter);
-app.use('/post', postRouter);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -43,6 +40,26 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+var sess = {
+  secret: process.env.COOKIE_SECRET || 'shhhh',
+  cookie: {},
+  resave: false,
+  saveUninitialized: false,
+}
+
+if (process.env.ENV_TYPE === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  sess.cookie.secure = true // serve secure cookies
+}
+
+app.use(session(sess));
+
+//Attach routes
+app.use('/', indexRouter);
+app.use('/dashboard', dashboardRouter);
+app.use('/login', loginRouter);
+app.use('/post', postRouter);
 
 
 //Get the DB working
