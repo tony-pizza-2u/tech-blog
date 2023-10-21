@@ -8,7 +8,7 @@ router.get('/:id', function(req, res, next) {
   var post = {};
 
   res.render(
-    'post',
+    'viewpost',
     {
       title: post.title,
       menubar: menubar.updateMenubar(req),

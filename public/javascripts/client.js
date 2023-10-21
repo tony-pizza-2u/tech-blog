@@ -3,7 +3,7 @@ var posts = document.getElementsByClassName("post");
 
 var openPost = function() {
     var id = this.getAttribute("data-id");
-    window.location.href = '/post/' + id;
+    window.location.href = '/viewpost/' + id;
 };
 
 for (var i = 0; i < posts.length; i++) {
