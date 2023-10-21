@@ -13,8 +13,7 @@ var dashboardRouter = require('./routes/dashboard');
 var loginRouter = require('./routes/login');
 var logoutRouter = require('./routes/logout');
 var signupRouter = require('./routes/signup');
-var viewPostRouter = require('./routes/viewpost');
-var newPostRouter = require('./routes/newpost');
+var postRouter = require('./routes/post');
 var commentRouter = require('./routes/comment');
 
 var app = express();
@@ -51,8 +50,7 @@ app.use('/dashboard', dashboardRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/signup', signupRouter);
-app.use('/viewpost', viewPostRouter);
-app.use('/newpost', newPostRouter);
+app.use('/post', postRouter);
 app.use('/comment', commentRouter);
 
 

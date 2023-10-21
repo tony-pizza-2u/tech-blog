@@ -22,7 +22,7 @@ router.post('*', function(req, res, next) {
 
     comment.save().then(result => {
 
-        res.redirect('/viewpost/' + postId);
+        res.redirect('/post/' + postId);
 
     });
 
