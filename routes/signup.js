@@ -34,6 +34,7 @@ router.post('*', function(req, res, next) {
                 user.save().then(result => {
         
                     req.session.loggedIn = true;
+                    req.session.user = user;
                     res.redirect('/dashboard');
         
                 });

@@ -1,17 +1,20 @@
 <div id="posts" class="container">
-    <div class="post" data-id="1">
+    {{#each posts}}
+    {{property}}
+    <div class="post">
         <div class="post_header">
             <div class="row">
                 <div class="col">
-                    <h3>First Article</h3>
+                    <h3>{{{title}}}</h3>
                 </div>
                 <div class="col post_details">
-                    Posted By: xxx on 10/19/2023
-                </div>                
+                    Posted By: {{User.email}} on {{{postdate}}}
+                </div>
             </div>
         </div>
         <div class="post_content">
-            Lorem ipsum etc etc etc
+            {{{content}}}
         </div>
     </div>
+    {{/each}}
 </div>

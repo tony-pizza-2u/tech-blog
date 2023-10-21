@@ -7,8 +7,6 @@ router.get('/:id', function(req, res, next) {
 
   var post = {};
 
-  post.title = "First Post!";
-
   res.render(
     'post',
     {

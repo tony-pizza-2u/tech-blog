@@ -13,7 +13,8 @@ var dashboardRouter = require('./routes/dashboard');
 var loginRouter = require('./routes/login');
 var logoutRouter = require('./routes/logout');
 var signupRouter = require('./routes/signup');
-var postRouter = require('./routes/post');
+var viewPostRouter = require('./routes/viewpost');
+var newPostRouter = require('./routes/newpost');
 
 var app = express();
 
@@ -27,10 +28,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const cookieTimeout = 60 * 60 * 1000; //One hour
+
 var sess = {
   secret: process.env.COOKIE_SECRET || 'shhhh',
-  cookie: {maxAge: 60000 },
-  resave: false,
+  cookie: {secure: false, maxAge: cookieTimeout},
+  resave: true,
   saveUninitialized: false,
 }
 
@@ -47,7 +50,8 @@ app.use('/dashboard', dashboardRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/signup', signupRouter);
-app.use('/post', postRouter);
+app.use('/viewpost', viewPostRouter);
+app.use('/newpost', newPostRouter);
 
 
 //Handle 404 errors

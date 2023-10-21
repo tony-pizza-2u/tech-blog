@@ -49,6 +49,7 @@ router.post('*', function(req, res, next) {
                 if (security.comparePass(password, user.passhash)){
     
                     req.session.loggedIn = true;
+                    req.session.user = user;
                     res.redirect('/dashboard');
     
                 } else {

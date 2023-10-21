@@ -1,21 +1,39 @@
 var express = require('express');
 var router = express.Router();
 
+const db = require('../models/index');
+
 const menubar = require('../utils/menubar');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
 
-  var posts = [];
+  db.Post.findAll({
+    order: [
+      ['createdAt', 'DESC'],
+    ],
+    include: db.User
+  }).then(results => {
 
-  res.render(
-    'index',
-    {
-      title: 'Tech Blog',
-      menubar: menubar.updateMenubar(req),
-      posts
-    });
+    var posts = results;
 
+    if (results.length > 0) {
+
+      for (i = 0; i < posts.length; i++) {
+        posts[i].postdate = posts[i].createdAt.toDateString();
+      }
+
+    }
+
+    res.render(
+      'index',
+      {
+        title: 'Tech Blog',
+        menubar: menubar.updateMenubar(req),
+        posts: posts
+      });
+
+  });
 
 });
 
