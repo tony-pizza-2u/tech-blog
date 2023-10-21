@@ -15,6 +15,7 @@ var logoutRouter = require('./routes/logout');
 var signupRouter = require('./routes/signup');
 var viewPostRouter = require('./routes/viewpost');
 var newPostRouter = require('./routes/newpost');
+var commentRouter = require('./routes/comment');
 
 var app = express();
 
@@ -52,6 +53,7 @@ app.use('/logout', logoutRouter);
 app.use('/signup', signupRouter);
 app.use('/viewpost', viewPostRouter);
 app.use('/newpost', newPostRouter);
+app.use('/comment', commentRouter);
 
 
 //Handle 404 errors

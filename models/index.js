@@ -17,6 +17,8 @@ db.Post.belongsTo(db.User);
 db.User.hasMany(db.Comment);
 db.User.hasMany(db.Post);
 
+db.Comment.belongsTo(db.User);
+
 if (process.env.SYNC_DB == 'true') {
 
     syncConfig = {};

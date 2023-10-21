@@ -15,22 +15,26 @@
         </div>
     </div>
 
+    {{#if allowComment}}
     <div>
-        <form action="/addcomment?post={{post.id}}" method="post">
+        <form action="/comment?post={{post.id}}" method="post">
             <div class="mb-3">
                 <h4>Add Your Comment!</h4>
-                <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+                <textarea class="form-control" id="content" name="content" rows="3"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Save Comment</button>
         </form>
     </div>
+    {{/if}}
 
     <div class="post_comments">
         <h4>Comments</h4>
-        {{#each post.Comments}}
+        {{#each comments}}
         <div class="comment">
             <blockquote>{{{content}}}
-                <span class="comment_user">John Doe: 10/19/2023 3:30PM</span>
+                <span class="comment_user">
+                    Posted By: {{User.email}} on {{{commentDate}}}
+                </span>
             </blockquote>
         </div>
         {{/each}}

@@ -26,9 +26,6 @@ router.post('*', function(req, res){
     var title = req.body.title;
     var content = req.body.content;
 
-    console.log(title);
-    console.log(content);
-
     const post = db.Post.build(
         { 
             title: title,
@@ -37,8 +34,6 @@ router.post('*', function(req, res){
         });
 
     post.save().then(result => {
-
-        console.log('saved post!');
 
         res.redirect('/dashboard');
 
