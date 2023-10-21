@@ -1,19 +1,28 @@
 var express = require('express');
 var router = express.Router();
 
+const db = require('../models/index');
+
 const menubar = require('../utils/menubar');
 
 router.get('/:id', function(req, res, next) {
 
-  var post = {};
+  id = req.params.id;
 
-  res.render(
-    'viewpost',
-    {
-      title: post.title,
-      menubar: menubar.updateMenubar(req),
-      post
-    });
+  db.Post.findByPk(id, {include: db.User}).then(results => {
+
+    var post = results;
+
+    post.postdate = post.createdAt.toDateString();
+
+    res.render(
+      'viewpost',
+      {
+        post: post,
+        menubar: menubar.updateMenubar(req),
+      });
+    
+  });
 
 
 });
