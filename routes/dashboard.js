@@ -9,7 +9,7 @@ const menubar = require('../utils/menubar');
 router.get('*', function(req, res, next) {
 
     if(req.session.loggedIn != true){
-        res.redirect('/');
+        res.redirect('/login');
     }
 
     db.Post.findAll({
