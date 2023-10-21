@@ -112,7 +112,7 @@ router.post('/update/:id', function(req, res, next){
     if(req.session.user.id == post.User.id){
       
       post.save().then(result => {
-        res.redirect('/post/' + post.id);
+        res.redirect('/dashboard');
       });
 
     }
