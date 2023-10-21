@@ -9,7 +9,7 @@ router.get('/:id', function(req, res, next) {
 
   id = req.params.id;
 
-  db.Post.findByPk(id, {include: db.User}).then(results => {
+  db.Post.findByPk(id, {include: [db.User, db.Comment]}).then(results => {
 
     var post = results;
 
